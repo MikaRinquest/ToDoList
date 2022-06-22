@@ -1,0 +1,45 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Editing the background */
+.background {
+  height: 100vh;
+  background-color: #fbeaff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Editing the container */
+.task-container {
+  border-radius: 11px;
+  background: #c1abe0;
+  height: 50vh;
+  width: 70vh;
+}
+
+/* Editing the header */
+.form {
+  text-align: center;
+  margin-top: 5px;
+}
+
+#task {
+  margin-right: 10px;
+  margin-left: 10px;
+  height: 22px;
+}
+
+/* Editing To Do List */
+#list {
+  text-align: center;
+}
+
+.list-item {
+  border: 2px solid black;
+  margin-top: 5px;
+  list-style: none;
+}
