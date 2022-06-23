@@ -7,18 +7,19 @@
 /* Editing the background */
 .background {
   height: 100vh;
+  width: 100vw;
   background-color: #fbeaff;
   display: flex;
   justify-content: center;
-  align-items: center;
+  align-items: flex-start;
 }
 
 /* Editing the container */
 .task-container {
   border-radius: 11px;
   background: #c1abe0;
-  height: 50vh;
   width: 70vh;
+  margin-top: 50px;
 }
 
 /* Editing the header */
@@ -31,15 +32,46 @@
   margin-right: 10px;
   margin-left: 10px;
   height: 22px;
+  font-size: medium;
+}
+
+.addto {
+  background-color: transparent;
+  border: none;
+  color: #4b4453;
+  font-size: 15px;
 }
 
 /* Editing To Do List */
 #list {
   text-align: center;
+  margin-left: 150px;
 }
 
 .list-item {
   border: 2px solid black;
   margin-top: 5px;
   list-style: none;
+  width: 30vh;
+}
+
+.fa-solid,
+.fas {
+  font-family: "Font Awesome 6 Free";
+  font-weight: 900;
+  display: none !important;
+}
+
+.fa-solid:hover {
+  display: block;
+}
+
+input:checked + label {
+  text-decoration: line-through;
+}
+
+/* Editing footer */
+.footer {
+  margin-top: 10px;
+  text-align: center;
 }

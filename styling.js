@@ -1,12 +1,14 @@
 // Creating the Array
-const objectives = [
-  {
-    id: 1,
-    item: "TV Stand",
-    createdDate: new Date(),
-    completed: false,
-  },
-];
+let objectives = JSON.parse(localStorage.getItem("tasks"))
+  ? JSON.parse(localStorage.getItem("tasks"))
+  : [
+      {
+        id: 1,
+        item: "TV Stand",
+        createdDate: new Date(),
+        completed: false,
+      },
+    ];
 
 // Looping the array
 function showItems(objectives) {
@@ -14,7 +16,16 @@ function showItems(objectives) {
   objectives.forEach((items) => {
     console.log(items);
     document.querySelector("#list").innerHTML += `
-        <li class="list-item">${items.item}</li>
+        <li class="list-item">
+            <input type="checkbox">
+                <label>
+                    ${items.item}
+                </
+                label>
+            </input>
+            <i class="fa-solid fa-trash-can" onclick="delete()"></i>
+            
+        </li>
         `;
   });
 }
@@ -28,6 +39,13 @@ function addTask() {
   let item = document.querySelector("#task").value;
   newObject = { id, item };
   objectives.push(newObject);
-  showItems(objectives);
   console.log(objectives);
+  localStorage.setItem("tasks", JSON.stringify(objectives));
+  showItems(objectives);
 }
+
+// // Load Data
+// function loadData() {
+//   console.log(objectives);
+// }
+// // loadData();
