@@ -18,14 +18,13 @@ function showItems(objectives) {
     document.querySelector("#list").innerHTML += `
         <li class="list-item">
             <input type="checkbox">
-                <label>
-                    ${items.item}
-                </
-                label>
-            </input>
-            <i class="fa-solid fa-trash-can" onclick="delete()"></i>
-            
-        </li>
+                   <h3 id="content"> ${items.item}</h3>
+              </input>
+              <div class="hide">
+                <button class="delete" onclick="deleteTask()"><i class="fa-solid fa-trash-can"></i></button>
+                 <i class="fa-solid fa-pen" onclick="editBtn()"></i>
+              </div>
+                    </li>
         `;
   });
 }
@@ -33,19 +32,33 @@ function showItems(objectives) {
 // Show array in HTML
 showItems(objectives);
 
-// Add task
-function addTask() {
-  let id = objectives.length + 1;
-  let item = document.querySelector("#task").value;
-  newObject = { id, item };
-  objectives.push(newObject);
-  console.log(objectives);
+// Add to local storage function
+function addToStorage(objectives) {
   localStorage.setItem("tasks", JSON.stringify(objectives));
-  showItems(objectives);
 }
 
-// // Load Data
-// function loadData() {
-//   console.log(objectives);
-// }
-// // loadData();
+// Add task
+function addTask() {
+  const id = objectives.length + 1;
+  const item = document.querySelector("#task").value;
+  const createDate = new Date();
+  const completed = false;
+  newObject = { id, item, createDate, completed };
+  objectives.push(newObject);
+  console.log(objectives);
+  // addToStorage(objectives);
+  showItems(objectives);
+  document.querySelector("#task").value = " ";
+}
+
+// Editing a task 
+let edit = document.getElementById("content");
+function editBtn() {
+edit.contentEditable = true;
+edit.style.backgroundColor = "mediumorchid"
+}
+
+// Delete a task
+
+
+

@@ -55,19 +55,23 @@
   width: 30vh;
 }
 
-.fa-solid,
-.fas {
-  font-family: "Font Awesome 6 Free";
-  font-weight: 900;
-  display: none !important;
-}
 
-.fa-solid:hover {
-  display: block;
-}
 
-input:checked + label {
+input:checked + h3 {
   text-decoration: line-through;
+}
+
+.delete {
+  background-color: transparent;
+  border: none;
+}
+
+.hide {
+  display: none;
+}
+
+.list-item:hover > .hide {
+  display: block;
 }
 
 /* Editing footer */
