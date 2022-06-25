@@ -14,6 +14,7 @@
   <body>
     <section class="background">
       <div class="task-container">
+        <h1 class="heading">To Do List</h1>
         <div class="task-header">
           <form onsubmit="event.preventDefault(); addTask()" class="form">
             <!-- <button onclick="sort()" class="sortby">Sort By</button> -->
@@ -33,7 +34,8 @@
         </div>
         <div class="footer">
           <select  class="sortby" placeholder="Sort By">
-            <option value="default" onclick="byId()">Sort By</option>
+            <option value="default">Sort By</option>  
+            <!-- onclick="byId() -->
             <option value="ascending" onclick="sortAsc()">Ascending</option>
             <option value="descending" onclick="sortDesc()">Descending</option>
           </select>

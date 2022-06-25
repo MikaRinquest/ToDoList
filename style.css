@@ -2,6 +2,7 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  font-size: 24px;
 }
 
 /* Editing the background */
@@ -14,7 +15,13 @@
   align-items: flex-start;
 }
 
+
 /* Editing the container */
+.heading {
+  font-size: 40px;
+  text-align: center;
+}
+
 .task-container {
   border-radius: 11px;
   background: #c1abe0;
@@ -31,7 +38,7 @@
 #task {
   margin-right: 10px;
   margin-left: 10px;
-  height: 22px;
+  height: 35px;
   font-size: medium;
 }
 
@@ -78,4 +85,32 @@ input:checked + h3 {
 .footer {
   margin-top: 10px;
   text-align: center;
+}
+
+
+/* Mobile Responsive */
+
+@media screen and (max-width: 1200px) {
+  
+  * {
+    font-size: 18px;
+  }
+
+  .task-container {
+    border-radius: 11px;
+    background: #c1abe0;
+    width: 45vh;
+    margin-top: 50px;
+  }
+
+  .list-item {
+  border: 2px solid black;
+  margin-top: 5px;
+  list-style: none;
+  width: 30vh;
+}
+
+#list {
+  margin-left: 50px;
+}
 }
