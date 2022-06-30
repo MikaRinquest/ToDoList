@@ -13,16 +13,16 @@ let objectives = JSON.parse(localStorage.getItem("tasks"))
 // Looping the array
 function showItems(objectives) {
   document.querySelector("#list").innerHTML = "";
-  objectives.forEach((items) => {
-    console.log(items);
+  objectives.forEach((objective) => {
+    console.log(objective);
     document.querySelector("#list").innerHTML += `
         <li class="list-item">
             <input type="checkbox">
-                   <h3 id="content"> ${items.item}</h3>
+                   <h3 id="content"> ${objective.item}</h3>
               </input>
               <div class="hide">
-                <button class="delete" onclick="deleteTask()"><i class="fa-solid fa-trash-can"></i></button>
-                 <i class="fa-solid fa-pen" onclick="editBtn()"></i>
+                <button class="delete" onclick="deleteTask(${objective.id})"><i class="fa-solid fa-trash-can"></i></button>
+                 <i class="fa-solid fa-pen" onclick="editBtn(${objective.id})"></i>
               </div>
                     </li>
         `;
@@ -51,27 +51,28 @@ function addTask() {
   document.querySelector("#task").value = " ";
 }
 
-// Editing a task 
-let edit = document.getElementById("content"); //Chooses what can be edited
-function editBtn() {
-edit.contentEditable = true; //states the the selected can be edited
-edit.style.backgroundColor = "mediumorchid" // changes background to show it can be edited
+// Editing a task
+function editBtn(id) {
+  let objective = objectives.find((objective) => objective.id === id); //Finds the id of button that was clicked
+  let input = prompt("Input Changes"); //Allows the user to input their own changes
+  objective.item = input; //Changes the content to what the user's input
+  addToStorage(objectives); //Adds to local storage
+  showItems(objectives); //Displays array
 }
 
-// Warning, currently only affects the first item in a list
-
-// Delete a task
-
-function deleteTask() {
-  const id = objectives.indexOf(name);
-  const removeTask = objectives.splice(id,1);
-  addToStorage(objectives);
-  showItems(objectives);
+// Jason delete
+function deleteTask(id) {
+  objectives = objectives.filter((item) => {
+    //Goes through the array and filters out every id that is equal to the selected one
+    return item.id !== id; //Returns all objects in the array that is not the same id as the selected one
+  });
+  addToStorage(objectives); // Adds to local storage
+  showItems(objectives); //Displays the array
 }
 
 // Sort
 function sortAsc() {
-  objectives.sort((a,b) => {
+  objectives.sort((a, b) => {
     if (a.item.toLowerCase() < b.item.toLowerCase()) {
       return -1;
     }
@@ -84,7 +85,7 @@ function sortAsc() {
 }
 
 function sortDesc() {
-  objectives.sort((a,b) => {
+  objectives.sort((a, b) => {
     if (b.item.toLowerCase() < a.item.toLowerCase()) {
       return -1;
     }
@@ -95,5 +96,3 @@ function sortDesc() {
   });
   showItems(objectives);
 }
-
-
